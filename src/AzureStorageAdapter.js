@@ -96,7 +96,7 @@ export class AzureStorageAdapter {
    */
   getFileLocation(config, filename) {
     if (this._directAccess) {
-      return `https://${this._accountName}.blob.core.windows.net/${this._container}/${filename}`;
+      return `https://${this._accountName}.blob.core.windows.net/${this._container}/${encodeURIComponent(filename)}`;
     }
     return (`${config.mount}/files/${config.applicationId}/${encodeURIComponent(filename)}`);
   }
